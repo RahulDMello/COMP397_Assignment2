@@ -1,12 +1,12 @@
 namespace objects {
-  export class Plane extends objects.GameObject {
+  export class Canon extends objects.GameObject {
     
     /**
-     * Creates an instance of Plane.
-     * @memberof Plane
+     * Creates an instance of Canon.
+     * @memberof Canon
      */
     constructor() {
-      super("plane");
+      super("canon");
 
       this.Start();
     }
@@ -25,14 +25,18 @@ namespace objects {
     }
 
     // public methods
-    public Start(): void {
+    public Start(): void { 
         this.regX = this.halfWidth;
-        this.regY = this.halfHeight;
-        this.y = 430;
+        this.regY = this.halfHeight + 20;
+        this.x = config.Screen.HALF_WIDTH;
+        this.y = config.Screen.HEIGHT - 10;
     }
 
     public Update(): void {
-        this.x = managers.Game.Stage.mouseX;
+        var pos = managers.Game.Stage.mouseX;
+        pos -= config.Screen.HALF_WIDTH;
+        var rotation = 90 * pos / config.Screen.HALF_WIDTH;
+        this.rotation = rotation;
         this._checkBounds();
     }
 

@@ -10,19 +10,19 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var objects;
 (function (objects) {
-    var Plane = /** @class */ (function (_super) {
-        __extends(Plane, _super);
+    var Canon = /** @class */ (function (_super) {
+        __extends(Canon, _super);
         /**
-         * Creates an instance of Plane.
-         * @memberof Plane
+         * Creates an instance of Canon.
+         * @memberof Canon
          */
-        function Plane() {
-            var _this = _super.call(this, "plane") || this;
+        function Canon() {
+            var _this = _super.call(this, "canon") || this;
             _this.Start();
             return _this;
         }
         // private methods
-        Plane.prototype._checkBounds = function () {
+        Canon.prototype._checkBounds = function () {
             // check right boundary
             if (this.x > config.Screen.WIDTH - this.halfWidth) {
                 this.x = config.Screen.WIDTH - this.halfWidth;
@@ -33,18 +33,22 @@ var objects;
             }
         };
         // public methods
-        Plane.prototype.Start = function () {
+        Canon.prototype.Start = function () {
             this.regX = this.halfWidth;
-            this.regY = this.halfHeight;
-            this.y = 430;
+            this.regY = this.halfHeight + 20;
+            this.x = config.Screen.HALF_WIDTH;
+            this.y = config.Screen.HEIGHT - 10;
         };
-        Plane.prototype.Update = function () {
-            this.x = managers.Game.Stage.mouseX;
+        Canon.prototype.Update = function () {
+            var pos = managers.Game.Stage.mouseX;
+            pos -= config.Screen.HALF_WIDTH;
+            var rotation = 90 * pos / config.Screen.HALF_WIDTH;
+            this.rotation = rotation;
             this._checkBounds();
         };
-        Plane.prototype.Reset = function () { };
-        return Plane;
+        Canon.prototype.Reset = function () { };
+        return Canon;
     }(objects.GameObject));
-    objects.Plane = Plane;
+    objects.Canon = Canon;
 })(objects || (objects = {}));
-//# sourceMappingURL=plane.js.map
+//# sourceMappingURL=canon.js.map

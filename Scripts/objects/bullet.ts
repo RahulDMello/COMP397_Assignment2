@@ -1,15 +1,18 @@
 namespace objects {
-    export class Cloud extends objects.GameObject {
+    export class Bullet extends objects.GameObject {
       // member variables
       private _verticalSpeed: number;
       private _horizontalSpeed: number;
+      private _scene: scenes.Play;
   
       /**
-       * Creates an instance of Cloud.
-       * @memberof Cloud
+       * Creates an instance of Bullet.
+       * @memberof Bullet
        */
-      constructor() {
-        super("cloud");
+      constructor(playScene: scenes.Play) {
+        super("bullet");
+
+        this._scene = playScene;
   
         this.Start();
       }
@@ -17,8 +20,8 @@ namespace objects {
       // private methods
       private _checkBounds(): void {
         // check bottom boundary
-        if (this.y > config.Screen.HEIGHT + this.halfHeight) {
-          this.Reset();
+        if(this.y < 0 || this.x < 0 || this.x > config.Screen.WIDTH) {
+            this._scene.removeChild(this);
         }
       }
   

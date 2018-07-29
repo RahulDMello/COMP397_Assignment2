@@ -21,7 +21,7 @@ var scenes;
         // private methods
         Play.prototype._buildClouds = function () {
             for (var count = 0; count < this._cloudNum; count++) {
-                this._clouds.push(new objects.Cloud());
+                this._clouds.push(new objects.Meteor());
                 //this._clouds[count] = new objects.Cloud();
             }
         };
@@ -30,9 +30,8 @@ var scenes;
             this.engineSound = createjs.Sound.play("engine");
             this.engineSound.loop = -1;
             this.engineSound.volume = 0.1;
-            this._plane = new objects.Plane();
+            this._canon = new objects.Canon();
             this._ocean = new objects.Ocean();
-            this._island = new objects.Island();
             // creates an empty array of type Cloud
             this._clouds = new Array();
             this._cloudNum = 3;
@@ -41,13 +40,12 @@ var scenes;
         };
         Play.prototype.Update = function () {
             var _this = this;
-            this._plane.Update();
+            this._canon.Update();
             this._ocean.Update();
-            this._island.Update();
-            managers.Collision.check(this._plane, this._island);
+            // managers.Collision.check(this._canon, this._island);
             this._clouds.forEach(function (cloud) {
                 cloud.Update();
-                managers.Collision.check(_this._plane, cloud);
+                managers.Collision.check(_this._canon, cloud);
             });
         };
         Play.prototype.Reset = function () {
@@ -61,9 +59,8 @@ var scenes;
             // adding the ocean to the scene
             this.addChild(this._ocean);
             // adding the island to the scene
-            this.addChild(this._island);
             // adding the plane to the scene
-            this.addChild(this._plane);
+            this.addChild(this._canon);
             // adding the cloud to the scene
             for (var _i = 0, _a = this._clouds; _i < _a.length; _i++) {
                 var cloud = _a[_i];

@@ -9,35 +9,20 @@
     var CurrentState;
     var ScoreBoardManager;
     var TextureAtlas;
-    var textureData = {
-        "images": [],
-        "framerate": 60,
-        "frames": [
-            [1, 1, 226, 178, 0, 0, 0],
-            [1, 181, 62, 63, 0, 0, 0],
-            [65, 181, 65, 65, 0, 0, 0],
-            [132, 181, 65, 65, 0, 0, 0],
-            [1, 248, 65, 65, 0, 0, 0],
-            [68, 248, 150, 50, 0, 0, 0],
-            [1, 315, 150, 50, 0, 0, 0]
-        ],
-        "animations": {
-            "cloud": { "frames": [0] },
-            "island": { "frames": [1] },
-            "plane": {
-                "frames": [2, 3, 4],
-                "speed": 0.2
-            },
-            "RestartButton": { "frames": [5] },
-            "StartButton": { "frames": [6] }
-        }
-    };
     var Manifest = [
-        { id: "textureAtlas", src: "/Assets/sprites/textureAtlas.png" },
+        { id: "StartButton", src: "/Assets/images/StartButton.png" },
+        { id: "NextButton", src: "/Assets/images/NextButton.png" },
+        { id: "BackButton", src: "/Assets/images/BackButton.png" },
+        { id: "plane", src: "/Assets/images/plane.png" },
         { id: "ocean", src: "/Assets/images/ocean.gif" },
+        { id: "island", src: "/Assets/images/island.png" },
+        { id: "cloud", src: "/Assets/images/cloud.png" },
         { id: "yay", src: "/Assets/audio/yay.ogg" },
         { id: "thunder", src: "/Assets/audio/thunder.ogg" },
-        { id: "engine", src: "/Assets/audio/engine.ogg" }
+        { id: "engine", src: "/Assets/audio/engine.ogg" },
+        { id: "canon", src: "/Assets/images/canon.png" },
+        { id: "meteor", src: "/Assets/images/meteor.png" },
+        { id: "bullet", src: "/Assets/images/bullet.png" }
     ];
     function Init() {
         console.log("%c Assets Loading...", "font-weight:bold; font-size:20px; color: green;");
@@ -60,9 +45,6 @@
         // setup scoreboard manager
         ScoreBoardManager = new managers.ScoreBoard();
         managers.Game.ScoreBoardManager = ScoreBoardManager;
-        textureData.images = [AssetManager.getResult("textureAtlas")];
-        TextureAtlas = new createjs.SpriteSheet(textureData);
-        managers.Game.TextureAtlas = TextureAtlas;
         // This is where all the magic happens
         Main();
     }

@@ -18,7 +18,7 @@ var managers;
                                 managers.Game.ScoreBoardManager.HighScore = managers.Game.ScoreBoardManager.Score;
                             }
                             break;
-                        case "cloud":
+                        case "meteor":
                             var thunderSound = createjs.Sound.play("thunder");
                             thunderSound.volume = 0.1;
                             managers.Game.ScoreBoardManager.Lives -= 1;

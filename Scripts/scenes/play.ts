@@ -1,10 +1,9 @@
 module scenes {
     export class Play extends objects.Scene {
         // member variables
-        private _plane:objects.Plane;
+        private _canon:objects.Canon;
         private _ocean:objects.Ocean;
-        private _island:objects.Island;
-        private _clouds:objects.Cloud[];
+        private _clouds:objects.Meteor[];
         private _cloudNum:number;
         
         public engineSound:createjs.AbstractSoundInstance;
@@ -19,7 +18,7 @@ module scenes {
         // private methods
         private _buildClouds():void {
             for (let count = 0; count < this._cloudNum; count++) {
-                this._clouds.push(new objects.Cloud());
+                this._clouds.push(new objects.Meteor()); 
                 //this._clouds[count] = new objects.Cloud();
             }
         }
@@ -31,12 +30,11 @@ module scenes {
             this.engineSound.volume = 0.1;
 
 
-            this._plane = new objects.Plane();
+            this._canon = new objects.Canon();
             this._ocean = new objects.Ocean();
-            this._island = new objects.Island();
 
             // creates an empty array of type Cloud
-            this._clouds = new Array<objects.Cloud>();
+            this._clouds = new Array<objects.Meteor>();
             this._cloudNum = 3;
 
             this._buildClouds();
@@ -45,15 +43,14 @@ module scenes {
         }
 
         public Update():void {
-            this._plane.Update();
+            this._canon.Update();
             this._ocean.Update();
-            this._island.Update();
 
-            managers.Collision.check(this._plane, this._island);
+            // managers.Collision.check(this._canon, this._island);
 
             this._clouds.forEach(cloud => {
                 cloud.Update();
-                managers.Collision.check(this._plane, cloud);
+                managers.Collision.check(this._canon, cloud);
             });
             
         }
@@ -74,10 +71,9 @@ module scenes {
             this.addChild(this._ocean);
 
             // adding the island to the scene
-            this.addChild(this._island);
 
             // adding the plane to the scene
-            this.addChild(this._plane);
+            this.addChild(this._canon);
 
             // adding the cloud to the scene
             for (const cloud of this._clouds) {
