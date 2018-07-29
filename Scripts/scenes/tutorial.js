@@ -12,7 +12,6 @@ var scenes;
 (function (scenes) {
     var Tutorial = /** @class */ (function (_super) {
         __extends(Tutorial, _super);
-        // member variables
         // constructors
         function Tutorial() {
             var _this = _super.call(this) || this;
@@ -22,6 +21,8 @@ var scenes;
         // private methods
         // public methods
         Tutorial.prototype.Start = function () {
+            this._welcomeLabel = new objects.Label("TUTORIAL", "80px", "Consolas", "#000", config.Screen.HALF_WIDTH, config.Screen.HALF_HEIGHT, true);
+            this._playButton = new objects.Button("StartButton", config.Screen.HALF_WIDTH, 360, true);
             this.Main();
         };
         Tutorial.prototype.Update = function () {
@@ -32,6 +33,12 @@ var scenes;
             this.removeAllChildren();
         };
         Tutorial.prototype.Main = function () {
+            console.log("Starting - START SCENE");
+            this.addChild(this._welcomeLabel);
+            this.addChild(this._playButton);
+            this._playButton.on("click", function () {
+                managers.Game.CurrentState = config.Scene.PLAY;
+            }, this);
         };
         return Tutorial;
     }(objects.Scene));

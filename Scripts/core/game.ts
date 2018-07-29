@@ -109,6 +109,10 @@
             CurrentScene = new scenes.Start();
             break;
 
+            case config.Scene.TUTORIAL:
+            CurrentScene = new scenes.Tutorial();
+            break;
+
             case config.Scene.PLAY:
             CurrentScene = new scenes.Play();
             break;

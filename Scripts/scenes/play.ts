@@ -13,7 +13,7 @@ module scenes {
         constructor() {
             super();
 
-            this.Start();
+            this.Start(); 
         }
 
         // private methods
