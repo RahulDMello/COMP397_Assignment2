@@ -18,32 +18,38 @@ namespace objects {
       }
   
       // private methods
-      private _checkBounds(): void {
-        // check bottom boundary
-        if(this.y < 0 || this.x < 0 || this.x > config.Screen.WIDTH) {
-            this._scene.removeChild(this);
-        }
-      }
+      
   
       // public methods
+
+      public CheckBounds(): boolean {
+        // check bottom boundary
+        return this.y < 0 || this.x < 0 || this.x > config.Screen.WIDTH
+      }
+
       public Start(): void {
         this.regX = this.halfWidth;
         this.regY = this.halfHeight;
-        
-        this.Reset();
+
+        let x1 = managers.Game.Stage.mouseX - config.Screen.HALF_WIDTH;
+        let y1 = managers.Game.Stage.mouseY;
+        let x2 = 0;
+        let y2 = config.Screen.HEIGHT;
+
+        this.x = config.Screen.HALF_WIDTH;
+        this.y = config.Screen.HEIGHT;
+
+        this._horizontalSpeed = Math.round(((-x1 * ((y2 - y1 - 2)/(y2 - y1))) + x1) * 100) / 100;
+        this._verticalSpeed = -2;
       }
   
       public Update(): void {
         this.y += this._verticalSpeed;
         this.x += this._horizontalSpeed;
-        this._checkBounds();
       }
   
       public Reset(): void {
-        this._verticalSpeed =  Math.floor((Math.random() * 5) + 5); // between 5 and 10 ppf
-        this._horizontalSpeed = Math.floor((Math.random() * 4) -2); // between -2 and 2 ppf
-        this.y = -this.height;
-        this.x = Math.floor((Math.random() * (config.Screen.WIDTH - this.width)) + this.halfWidth);
+
       }
     }
   }

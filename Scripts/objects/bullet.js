@@ -23,28 +23,28 @@ var objects;
             return _this;
         }
         // private methods
-        Bullet.prototype._checkBounds = function () {
-            // check bottom boundary
-            if (this.y < 0 || this.x < 0 || this.x > config.Screen.WIDTH) {
-                this._scene.removeChild(this);
-            }
-        };
         // public methods
+        Bullet.prototype.CheckBounds = function () {
+            // check bottom boundary
+            return this.y < 0 || this.x < 0 || this.x > config.Screen.WIDTH;
+        };
         Bullet.prototype.Start = function () {
             this.regX = this.halfWidth;
             this.regY = this.halfHeight;
-            this.Reset();
+            var x1 = managers.Game.Stage.mouseX - config.Screen.HALF_WIDTH;
+            var y1 = managers.Game.Stage.mouseY;
+            var x2 = 0;
+            var y2 = config.Screen.HEIGHT;
+            this.x = config.Screen.HALF_WIDTH;
+            this.y = config.Screen.HEIGHT;
+            this._horizontalSpeed = Math.round(((-x1 * ((y2 - y1 - 2) / (y2 - y1))) + x1) * 100) / 100;
+            this._verticalSpeed = -2;
         };
         Bullet.prototype.Update = function () {
             this.y += this._verticalSpeed;
             this.x += this._horizontalSpeed;
-            this._checkBounds();
         };
         Bullet.prototype.Reset = function () {
-            this._verticalSpeed = Math.floor((Math.random() * 5) + 5); // between 5 and 10 ppf
-            this._horizontalSpeed = Math.floor((Math.random() * 4) - 2); // between -2 and 2 ppf
-            this.y = -this.height;
-            this.x = Math.floor((Math.random() * (config.Screen.WIDTH - this.width)) + this.halfWidth);
         };
         return Bullet;
     }(objects.GameObject));
