@@ -11,7 +11,8 @@ namespace managers {
         object1.x = -5;
         object1.y = -5;
         object2.Reset();
-        createjs.Sound.play("bubble");
+        let bubble = createjs.Sound.play("bubble");
+        bubble.volume = 0.2;
         managers.Game.ScoreBoardManager.Score += 10;
       }
     }
@@ -25,6 +26,8 @@ namespace managers {
 
       if (math.Vec2.Distance(P1, P2) < object1.halfHeight + object2.halfHeight) {
         object2.Reset();
+        let blast = createjs.Sound.play("blast");
+        blast.volume = 0.2;
         managers.Game.ScoreBoardManager.Lives -= 1;
         if(managers.Game.ScoreBoardManager.Lives <= 0) {
           managers.Game.CurrentState = config.Scene.END;

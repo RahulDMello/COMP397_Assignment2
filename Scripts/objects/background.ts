@@ -1,14 +1,14 @@
 namespace objects {
-  export class Ocean extends createjs.Bitmap {
+  export class Background extends createjs.Bitmap {
     // member variables
     private _verticalSpeed: number;
 
     /**
-     * Creates an instance of Ocean.
-     * @memberof Ocean
+     * Creates an instance of Background.
+     * @memberof Background
      */
     constructor() {
-      super(managers.Game.AssetManager.getResult("ocean"));
+      super(managers.Game.AssetManager.getResult("background"));
 
       this.Start();
     }
@@ -23,7 +23,7 @@ namespace objects {
 
     // public methods
     public Start(): void {
-      this._verticalSpeed = 5; // 5 pixels per frame
+      this._verticalSpeed = 7; // 8 pixels per frame
       this.Reset();
     }
 

@@ -10,38 +10,38 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var objects;
 (function (objects) {
-    var Ocean = /** @class */ (function (_super) {
-        __extends(Ocean, _super);
+    var Background = /** @class */ (function (_super) {
+        __extends(Background, _super);
         /**
-         * Creates an instance of Ocean.
-         * @memberof Ocean
+         * Creates an instance of Background.
+         * @memberof Background
          */
-        function Ocean() {
-            var _this = _super.call(this, managers.Game.AssetManager.getResult("ocean")) || this;
+        function Background() {
+            var _this = _super.call(this, managers.Game.AssetManager.getResult("background")) || this;
             _this.Start();
             return _this;
         }
         // private methods
-        Ocean.prototype._checkBounds = function () {
+        Background.prototype._checkBounds = function () {
             // check top boundary
             if (this.y >= 0) {
                 this.Reset();
             }
         };
         // public methods
-        Ocean.prototype.Start = function () {
-            this._verticalSpeed = 5; // 5 pixels per frame
+        Background.prototype.Start = function () {
+            this._verticalSpeed = 7; // 8 pixels per frame
             this.Reset();
         };
-        Ocean.prototype.Update = function () {
+        Background.prototype.Update = function () {
             this.y += this._verticalSpeed;
             this._checkBounds();
         };
-        Ocean.prototype.Reset = function () {
+        Background.prototype.Reset = function () {
             this.y = -960;
         };
-        return Ocean;
+        return Background;
     }(createjs.Bitmap));
-    objects.Ocean = Ocean;
+    objects.Background = Background;
 })(objects || (objects = {}));
-//# sourceMappingURL=ocean.js.map
+//# sourceMappingURL=background.js.map

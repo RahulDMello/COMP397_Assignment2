@@ -27,12 +27,12 @@ var scenes;
         };
         // public methods
         Play.prototype.Start = function () {
-            this.engineSound = createjs.Sound.play("engine");
+            this.engineSound = createjs.Sound.play("bgmusic");
             this.engineSound.loop = -1;
             this.engineSound.volume = 0.1;
             this._bullets = new Array();
             this._canon = new objects.Canon();
-            this._ocean = new objects.Ocean();
+            this._ocean = new objects.Background();
             // creates an empty array of type Cloud
             this._meteors = new Array();
             this._meteorNum = 3;
@@ -49,7 +49,7 @@ var scenes;
                 meteor.Update();
                 managers.Collision.checkMeteorCanon(_this._canon, meteor);
             });
-            if (this._frame >= 60) {
+            if (this._frame >= 45) {
                 var bullet = new objects.Bullet(this);
                 this._bullets.push(bullet);
                 this.addChildAt(bullet, 1);

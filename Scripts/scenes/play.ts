@@ -2,7 +2,7 @@ module scenes {
     export class Play extends objects.Scene {
         // member variables
         private _canon:objects.Canon;
-        private _ocean:objects.Ocean;
+        private _ocean:objects.Background;
         private _meteors:objects.Meteor[];
         private _meteorNum:number;
         private _bullets: objects.Bullet[];
@@ -27,14 +27,14 @@ module scenes {
 
         // public methods
         public Start():void {
-            this.engineSound = createjs.Sound.play("engine");
+            this.engineSound = createjs.Sound.play("bgmusic");
             this.engineSound.loop = -1;
             this.engineSound.volume = 0.1;
 
             this._bullets = new Array<objects.Bullet>();
 
             this._canon = new objects.Canon();
-            this._ocean = new objects.Ocean();
+            this._ocean = new objects.Background();
 
             // creates an empty array of type Cloud
             this._meteors = new Array<objects.Meteor>();
@@ -58,7 +58,7 @@ module scenes {
                 managers.Collision.checkMeteorCanon(this._canon, meteor);
             });
 
-            if(this._frame >= 60) {
+            if(this._frame >= 45) {
                  let bullet = new objects.Bullet(this);
                  this._bullets.push(bullet);
                  this.addChildAt(bullet, 1);

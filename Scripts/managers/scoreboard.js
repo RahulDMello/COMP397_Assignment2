@@ -63,6 +63,9 @@ var managers;
             set: function (newValue) {
                 this._score = newValue;
                 this.ScoreLabel.text = "Score: " + this._score;
+                if (this._score > this._highScore) {
+                    this.HighScore = this._score;
+                }
             },
             enumerable: true,
             configurable: true
@@ -81,9 +84,9 @@ var managers;
         // private methods
         // public methods
         ScoreBoard.prototype.Start = function () {
-            this._livesLabel = new objects.Label("Lives: 99", "30px", "Dock51", "#FFFF00", 20, 20, false);
-            this._scoreLabel = new objects.Label("Score: 99999", "30px", "Dock51", "#FFFF00", 370, 20, false);
-            this._highScoreLabel = new objects.Label("High Score: 99999", "60px", "Dock51", "#FFFF00", config.Screen.HALF_WIDTH, config.Screen.HALF_HEIGHT, true);
+            this._livesLabel = new objects.Label("Lives: 99", "30px", "Space Mono", "#FFFF00", 20, 20, false);
+            this._scoreLabel = new objects.Label("Score: 99999", "30px", "Space Mono", "#FFFF00", 370, 20, false);
+            this._highScoreLabel = new objects.Label("High Score: 99999", "48px", "Space Mono", "#FFFF00", config.Screen.HALF_WIDTH + 20, config.Screen.HALF_HEIGHT, true);
             this.HighScore = 0;
             this.Reset();
         };

@@ -23,7 +23,11 @@
         {id: "engine", src:"/Assets/audio/engine.ogg"},
         {id: "canon", src:"/Assets/images/canon.png"},
         {id: "meteor", src:"/Assets/images/meteor.png"},
-        {id: "bullet", src:"/Assets/images/bullet.png"}
+        {id: "bullet", src:"/Assets/images/bullet.png"},
+        {id: "blast", src:"/Assets/audio/blast.mp3"},
+        {id: "bubble", src:"/Assets/audio/bubble.mp3"},
+        {id: "background", src:"/Assets/images/background.png"},
+        {id: "bgmusic", src:"Assets/audio/bgmusic.mp3"}
     ]
 
 

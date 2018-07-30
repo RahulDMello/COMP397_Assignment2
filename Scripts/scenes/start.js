@@ -21,12 +21,13 @@ var scenes;
         // private methods
         // public methods
         Start.prototype.Start = function () {
-            this._welcomeLabel = new objects.Label("RACE", "80px", "Consolas", "#000", config.Screen.HALF_WIDTH, config.Screen.HALF_HEIGHT, true);
+            this._welcomeLabel = new objects.Label("GALAXY SHOOTER", "62px", "Space Mono", "#FF0", config.Screen.HALF_WIDTH, config.Screen.HALF_HEIGHT, true);
             this._startButton = new objects.Button("StartButton", config.Screen.HALF_WIDTH, 360, true);
-            this._background = new createjs.Bitmap(managers.Game.AssetManager.getResult("ocean"));
+            this._background = new objects.Background();
             this.Main();
         };
         Start.prototype.Update = function () {
+            this._background.Update();
         };
         Start.prototype.Reset = function () {
         };

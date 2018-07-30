@@ -21,7 +21,7 @@ var scenes;
         // private methods
         // public methods
         Tutorial.prototype.Start = function () {
-            this._welcomeLabel = new objects.Label("TUTORIAL", "80px", "Consolas", "#000", config.Screen.HALF_WIDTH, config.Screen.HALF_HEIGHT, true);
+            this._welcomeLabel = new objects.Label("TUTORIAL", "80px", "Space Mono", "#000", config.Screen.HALF_WIDTH, config.Screen.HALF_HEIGHT, true);
             this._playButton = new objects.Button("StartButton", config.Screen.HALF_WIDTH, 360, true);
             this.Main();
         };

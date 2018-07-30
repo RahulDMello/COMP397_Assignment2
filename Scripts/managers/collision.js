@@ -10,7 +10,8 @@ var managers;
                 object1.x = -5;
                 object1.y = -5;
                 object2.Reset();
-                createjs.Sound.play("bubble");
+                var bubble = createjs.Sound.play("bubble");
+                bubble.volume = 0.2;
                 managers.Game.ScoreBoardManager.Score += 10;
             }
         };
@@ -19,6 +20,8 @@ var managers;
             var P2 = new math.Vec2(object2.x, object2.y);
             if (math.Vec2.Distance(P1, P2) < object1.halfHeight + object2.halfHeight) {
                 object2.Reset();
+                var blast = createjs.Sound.play("blast");
+                blast.volume = 0.2;
                 managers.Game.ScoreBoardManager.Lives -= 1;
                 if (managers.Game.ScoreBoardManager.Lives <= 0) {
                     managers.Game.CurrentState = config.Scene.END;
