@@ -5,6 +5,5 @@ module managers {
         public static CurrentState:config.Scene;
         public static Stage:createjs.Stage;
         public static ScoreBoardManager:managers.ScoreBoard;
-        public static TextureAtlas:createjs.SpriteSheet;
     }
 }
