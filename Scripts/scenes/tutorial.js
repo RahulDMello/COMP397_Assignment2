@@ -21,8 +21,10 @@ var scenes;
         // private methods
         // public methods
         Tutorial.prototype.Start = function () {
-            this._welcomeLabel = new objects.Label("TUTORIAL", "80px", "Space Mono", "#000", config.Screen.HALF_WIDTH, config.Screen.HALF_HEIGHT, true);
-            this._playButton = new objects.Button("StartButton", config.Screen.HALF_WIDTH, 360, true);
+            this._background = new createjs.Bitmap(managers.Game.AssetManager.getResult("tutorial"));
+            this._playButton = new objects.Button("PlayButton", config.Screen.WIDTH, config.Screen.HEIGHT, false);
+            this._playButton.x -= this._playButton.width + 15;
+            this._playButton.y -= this._playButton.height + 15;
             this.Main();
         };
         Tutorial.prototype.Update = function () {
@@ -34,7 +36,7 @@ var scenes;
         };
         Tutorial.prototype.Main = function () {
             console.log("Starting - START SCENE");
-            this.addChild(this._welcomeLabel);
+            this.addChild(this._background);
             this.addChild(this._playButton);
             this._playButton.on("click", function () {
                 managers.Game.CurrentState = config.Scene.PLAY;

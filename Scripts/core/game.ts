@@ -12,7 +12,6 @@
 
     let Manifest = [
         {id: "StartButton", src:"/Assets/images/StartButton.png"},
-        {id: "NextButton", src:"/Assets/images/NextButton.png"},
         {id: "BackButton", src:"/Assets/images/BackButton.png"},
         {id: "plane", src:"/Assets/images/plane.png"},
         {id: "ocean", src:"/Assets/images/ocean.gif"},
@@ -27,7 +26,11 @@
         {id: "blast", src:"/Assets/audio/blast.mp3"},
         {id: "bubble", src:"/Assets/audio/bubble.mp3"},
         {id: "background", src:"/Assets/images/background.png"},
-        {id: "bgmusic", src:"Assets/audio/bgmusic.mp3"}
+        {id: "bgmusic", src:"Assets/audio/bgmusic.mp3"},
+        {id: "tutorial", src:"/Assets/images/tutorial.png"},
+        {id: "PlayButton", src:"/Assets/images/PlayButton.png"},
+        {id: "RestartButton", src:"/Assets/images/RestartButton.png"},
+        {id: "TutorialButton", src:"/Assets/images/TutorialButton.png"}
     ]
 
 

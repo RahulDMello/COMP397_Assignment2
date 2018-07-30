@@ -1,7 +1,7 @@
 module scenes {
     export class Tutorial extends objects.Scene {
         // member variables
-        private _welcomeLabel: objects.Label;
+        private _background: createjs.Bitmap;
         private _playButton: objects.Button;
         
         // constructors
@@ -15,8 +15,10 @@ module scenes {
 
         // public methods
         public Start():void {
-            this._welcomeLabel = new objects.Label("TUTORIAL", "80px", "Space Mono", "#000", config.Screen.HALF_WIDTH, config.Screen.HALF_HEIGHT, true);
-            this._playButton = new objects.Button("StartButton", config.Screen.HALF_WIDTH, 360, true);
+            this._background = new createjs.Bitmap(managers.Game.AssetManager.getResult("tutorial"));
+            this._playButton = new objects.Button("PlayButton", config.Screen.WIDTH, config.Screen.HEIGHT, false);
+            this._playButton.x -= this._playButton.width + 15;
+            this._playButton.y -= this._playButton.height + 15;
 
             this.Main();
         }
@@ -36,7 +38,7 @@ module scenes {
         public Main():void {
             console.log(`Starting - START SCENE`);
 
-            this.addChild(this._welcomeLabel);
+            this.addChild(this._background);
             this.addChild(this._playButton);
 
             this._playButton.on("click", function(){

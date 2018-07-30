@@ -83,7 +83,7 @@ module managers {
         
             this._livesLabel = new objects.Label("Lives: 99", "30px", "Space Mono","#FFFF00", 20, 20, false);
             this._scoreLabel = new objects.Label("Score: 99999", "30px", "Space Mono", "#FFFF00", 370, 20, false);
-            this._highScoreLabel = new objects.Label("High Score: 99999", "48px", "Space Mono", "#FFFF00", config.Screen.HALF_WIDTH + 20, config.Screen.HALF_HEIGHT, true);
+            this._highScoreLabel = new objects.Label("High Score: 99999", "48px", "Space Mono", "#FFFF00", config.Screen.HALF_WIDTH, config.Screen.HALF_HEIGHT, true);
             
             this.HighScore = 0;
 

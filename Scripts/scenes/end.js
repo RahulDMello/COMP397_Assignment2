@@ -21,13 +21,14 @@ var scenes;
         // private methods
         // public methods
         End.prototype.Start = function () {
-            this._ocean = new objects.Background();
+            this._background = new objects.Background();
             this._gameOverLabel = new objects.Label("Game Over!", "80px", "Space Mono", "#FFFF00", config.Screen.HALF_WIDTH, 160, true);
-            this._restartButton = new objects.Button("StartButton", config.Screen.HALF_WIDTH, 360, true);
+            this._restartButton = new objects.Button("RestartButton", config.Screen.HALF_WIDTH, 340, true);
+            this._tutorialButton = new objects.Button("TutorialButton", config.Screen.HALF_WIDTH, 420, true);
             this.Main();
         };
         End.prototype.Update = function () {
-            this._ocean.Update();
+            this._background.Update();
         };
         End.prototype.Reset = function () {
         };
@@ -36,13 +37,18 @@ var scenes;
         };
         End.prototype.Main = function () {
             console.log("Starting - END SCENE");
-            this.addChild(this._ocean);
+            this.addChild(this._background);
             this.addChild(this._gameOverLabel);
             this.addChild(managers.Game.ScoreBoardManager.HighScoreLabel);
             this.addChild(this._restartButton);
+            this.addChild(this._tutorialButton);
             this._restartButton.on("click", function () {
                 managers.Game.ScoreBoardManager.Reset();
                 managers.Game.CurrentState = config.Scene.PLAY;
+            }, this);
+            this._tutorialButton.on("click", function () {
+                managers.Game.ScoreBoardManager.Reset();
+                managers.Game.CurrentState = config.Scene.TUTORIAL;
             }, this);
         };
         return End;
